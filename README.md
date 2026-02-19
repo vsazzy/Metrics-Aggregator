@@ -1,4 +1,4 @@
-# Real-Time Metrics Aggregator (Senior Engineering Project)
+# Real-Time Metrics Aggregator
 
 A distributed system built to demonstrate high-scale data ingestion, stream processing, and container orchestration. 
 
