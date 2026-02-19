@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis_bus
+    ports:
+      - "6379:6379"
+    networks:
+      - metrics_net
+
+  producer:
+    build: ./producer
+    container_name: log_producer
+    depends_on:
+      - redis
+    env_file: .env
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - metrics_net
+
+# THIS IS THE PART YOU ARE MISSING:
+networks:
+  metrics_net:
+    driver: bridge
